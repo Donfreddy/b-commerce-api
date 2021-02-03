@@ -27,7 +27,6 @@ mongoose.connect(
 
 // Using express to parse json data
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(logger("dev"));
 
 // simple route

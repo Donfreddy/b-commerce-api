@@ -23,6 +23,7 @@ const userSchema = new Schema(
       required: [true, "Please enter a password"],
       minlength: [6, "The password min length is 6 caracters"],
     },
+    wishlist: [{ type: Schema.Types.ObjectId, ref: "Product", default: [] }],
     image_url: { type: String },
   },
   { timestamps: true },
@@ -50,4 +51,4 @@ userSchema.statics.login = async function (email, password) {
   throw Error("incorrect email");
 };
 
-module.exports = mongoose.model("users", userSchema);
+module.exports = mongoose.model("User", userSchema, "users");
