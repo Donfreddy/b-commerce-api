@@ -7,9 +7,10 @@ const productController = require("../controller/productController");
 /**
  * To get all products
  * GET request.
- * Endpoint: api/products
+ * Endpoint: api/products?cat=any&page=2&size=1
  **/
 router.get("/products", productController.getAllProduct);
+
 
 /**
  * To create a product
