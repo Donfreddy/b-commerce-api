@@ -4,18 +4,18 @@ const User = require("../models/userModel");
 const Product = require("../models/productModel");
 
 async function getAllUsers(req, res) {
-  // upload images
-  // await User.find((err, doc) => {
-  //   if (err) {
-  //     res.status(400).json({ message: "Error occured" });
-  //   } else {
-  //     res.status(200).json({ data: doc });
-  //   }
-  // });
+  //upload images
+  await User.find((err, doc) => {
+    if (err) {
+      res.status(400).json({ message: "Error occured" });
+    } else {
+      res.status(200).json({ data: doc });
+    }
+  });
 }
 
 async function getUser(req, res) {
-  await User.findById(req.body.id, (err, doc) => {
+  await User.findById(req.params.id, (err, doc) => {
     if (err) {
       res.status(400).json({ message: "User does not exist" });
     } else {

@@ -9,18 +9,18 @@ const { isEmail } = require("validator");
 
 const userSchema = new Schema(
   {
-    full_name: { type: String, required: true },
+    username: { type: String },
     email: {
       type: String,
-      required: [true, "Please enter a email"],
+     // required: [true, "Please enter a email"],
       unique: true,
       lowercase: true,
       validate: [isEmail, "Enter a valid email"],
     },
-    phone: { type: String, required: true },
+    phone: { type: String },
     password: {
       type: String,
-      required: [true, "Please enter a password"],
+      // required: [true, "Please enter a password"],
       minlength: [6, "The password min length is 6 caracters"],
     },
     wishlist: [{ type: Schema.Types.ObjectId, ref: "Product", default: [] }],
@@ -39,8 +39,8 @@ userSchema.pre("save", function (next) {
   });
 });
 
-userSchema.statics.login = async function (email, password) {
-  const user = await this.findOne({ email });
+userSchema.statics.login = async function (username, password) {
+  const user = await this.findOne({ username });
   if (user) {
     const auth = await bcrypt.compare(password, user.password);
     if (auth) {
@@ -48,7 +48,7 @@ userSchema.statics.login = async function (email, password) {
     }
     throw Error("incorrect password");
   }
-  throw Error("incorrect email");
+  throw Error("incorrect username");
 };
 
 module.exports = mongoose.model("User", userSchema, "users");

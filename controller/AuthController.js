@@ -38,8 +38,8 @@ const handleErrors = (err) => {
 };
 
 const register = (req, res) => {
-  const { email, password } = req.body;
-  const user = new userModel({ email, password });
+  const { username, email, password } = req.body;
+  const user = new userModel({ username, email, password });
 
   user
     .save()
@@ -62,11 +62,11 @@ const register = (req, res) => {
 };
 
 const login = (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
   userModel
-    .login(email, password)
+    .login(username, password)
     .then((result) => {
-      res.status(201).json({
+      res.status(200).json({
         user: result,
         jwt: createToken(result._id),
       });

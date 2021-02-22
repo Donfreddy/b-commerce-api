@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 // Configure Routes
 app.use("/api/blog", blogRoute);
 app.use("/api/auth", authRoute);
-app.use("/api/test", userRoute);
+app.use("/api", userRoute);
 app.use("/api", productRoute);
 app.use("/api", categoryRoute);
 

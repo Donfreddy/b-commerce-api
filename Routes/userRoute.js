@@ -11,21 +11,29 @@ const userController = require("../controller/userController");
  * For Getting all users
  * Require authentification
  * GET request.
- * Endpoint: api/test/users
+ * Endpoint: api/users
  **/
 router.get("/users", userController.getAllUsers);
 
 /**
+ * For Getting all users
+ * Require authentification
+ * GET request.
+ * Endpoint: api/users/:id
+ **/
+router.get("/users/:id", userController.getUser);
+
+/**
  * For update user info.
  * Patch request.
- * Endpoint: api/test/users/:id
+ * Endpoint: api/users/:id
  **/
 router.patch("/users/:id", multer, userController.updateUser);
 
 /**
  * For delleting a user.
  * Delete request.
- * Endpoint: api/test/users/:id
+ * Endpoint: api/users/:id
  **/
 router.get("/users/:id", userController.deleteUser);
 
@@ -65,6 +73,9 @@ router.delete(
 
 module.exports = router;
 
-// me 6014e07e96b32330bc71d459
+/**
+ * For test
+ */
+// my id: 6014e07e96b32330bc71d459
+// product: 60134cea5e3f3890f80a095b
 
-// product 60134cea5e3f3890f80a095b
